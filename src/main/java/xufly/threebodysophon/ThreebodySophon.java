@@ -18,12 +18,16 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.stream.Collectors;
 
+/**
+ * @author XuFly
+ */
+
 @Mod("threebodysophon")
-public class threebodysophon
+public class ThreebodySophon
 {
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public threebodysophon()
+    public ThreebodySophon()
     {
         // Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
