@@ -21,9 +21,8 @@ public class EventHandler
         Entity entity = event.getEntity();
         if (entity instanceof PlayerEntity)
         {
-            //String message = "消灭人类暴政，世界属于三体！";
-            String message = "Eliminate human tyranny, the world belongs to the threebody!";
-            ITextComponent text = new StringTextComponent(message);
+            String message1 = "消灭人类暴政，世界属于三体！\n";
+            ITextComponent text = new StringTextComponent(message1);
             entity.sendMessage(text, entity.getUUID());
         }
     }
