@@ -25,6 +25,8 @@ import java.util.stream.Collectors;
 @Mod("threebodysophon")
 public class ThreebodySophon
 {
+    public static final String MODID = "threebodysophon";
+
     private static final Logger LOGGER = LogManager.getLogger();
 
     public ThreebodySophon()
