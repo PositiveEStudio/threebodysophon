@@ -21,8 +21,8 @@ public class EventHandler
         Entity entity = event.getEntity();
         if (entity instanceof PlayerEntity)
         {
-            String message1 = "消灭人类暴政，世界属于三体！\n";
-            ITextComponent text = new StringTextComponent(message1);
+            String message = "消灭人类暴政，世界属于三体！";
+            ITextComponent text = new StringTextComponent(message);
             entity.sendMessage(text, entity.getUUID());
         }
     }
