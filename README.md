@@ -1,9 +1,13 @@
 # Threebody Sophon
 
-###徐弗洛 德尔
+### 徐弗洛 德尔
+
+[![star](https://gitee.com/xu_fly/threebody-sophon/badge/star.svg?theme=white)](https://gitee.com/xu_fly/threebody-sophon/stargazers)
 
 #### 介绍
+
 我的世界Mod 还原刘慈欣著名科幻小说《三体》中的智子（尽可能）
+
 1. 原型介绍
 2. 核心功能及操作方法
    1. 感官欺骗
