@@ -7,7 +7,7 @@ public class ItemProton extends Item
 {
     public ItemProton()
     {
-        super(new Properties());
+        super(new Properties().stacksTo(1));
         this.setRegistryName(ThreebodySophon.MODID,"proton");
     }
 }
