@@ -1,4 +1,4 @@
-﻿package xufly.threebodysophon.item;
+package xufly.threebodysophon.item;
 
 import net.minecraftforge.fml.common.Mod;
 
