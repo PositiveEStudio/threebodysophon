@@ -1,13 +1,16 @@
 package xufly.threebodysophon.item;
 
 import net.minecraft.item.Item;
-import xufly.threebodysophon.ThreebodySophon;
+import xufly.threebodysophon.creative.ModGroup;
+
+/**
+ * @author XuFly
+ */
 
 public class ItemProton extends Item
 {
     public ItemProton()
     {
-        super(new Properties().stacksTo(1));
-        this.setRegistryName(ThreebodySophon.MODID,"proton");
+        super(new Properties().tab(ModGroup.itemGroup).stacksTo(1));
     }
 }
