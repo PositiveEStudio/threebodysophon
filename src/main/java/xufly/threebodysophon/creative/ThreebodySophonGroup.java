@@ -2,7 +2,7 @@ package xufly.threebodysophon.creative;
 
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import xufly.threebodysophon.item.ItemRegistryEvent;
+import xufly.threebodysophon.item.ItemRegistryHandler;
 
 /**
  * @author XuFly
@@ -18,6 +18,6 @@ public class ThreebodySophonGroup extends ItemGroup
     @Override
     public ItemStack makeIcon()
     {
-        return new ItemStack(ItemRegistryEvent.PROTON.get());
+        return new ItemStack(ItemRegistryHandler.PROTON.get());
     }
 }

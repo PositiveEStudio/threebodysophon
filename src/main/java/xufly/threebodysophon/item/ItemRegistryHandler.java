@@ -12,8 +12,9 @@ import xufly.threebodysophon.ThreebodySophon;
  */
 
 @Mod.EventBusSubscriber
-public class ItemRegistryEvent
+public class ItemRegistryHandler
 {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ThreebodySophon.MODID);
     public static RegistryObject<Item> PROTON = ITEMS.register("proton", ItemProton::new);
+    public static RegistryObject<Item> MATERIAL_SINGULARITY_17 = ITEMS.register("material_singularity_17", ItemMaterialSingularity17::new);
 }

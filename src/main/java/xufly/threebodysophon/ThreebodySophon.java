@@ -15,7 +15,7 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import xufly.threebodysophon.item.ItemRegistryEvent;
+import xufly.threebodysophon.item.ItemRegistryHandler;
 
 import java.util.stream.Collectors;
 
@@ -43,7 +43,7 @@ public class ThreebodySophon
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-        ItemRegistryEvent.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ItemRegistryHandler.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     private void setup(final FMLCommonSetupEvent event)
