@@ -6,9 +6,10 @@ import xufly.threebodysophon.creative.ModGroup;
 /**
  * @author XuFly
  */
-public class BasicAccelerator extends Item
+
+public class ItemBasicAccelerator extends Item
 {
-    public BasicAccelerator()
+    public ItemBasicAccelerator()
     {
         super(new Properties().tab(ModGroup.itemGroup));
     }
