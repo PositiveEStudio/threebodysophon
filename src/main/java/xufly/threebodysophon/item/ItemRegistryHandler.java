@@ -21,4 +21,5 @@ public class ItemRegistryHandler
     public static RegistryObject<Item> ACCELERATION_COMPONENT = ITEMS.register("acceleration_component", ItemAccelerationComponent::new);
     public static RegistryObject<Item> CONTROL_CORE = ITEMS.register("control_core", ItemControlCore::new);
     public static RegistryObject<Item> ENGRAVING_COMPONENT = ITEMS.register("engraving_component", ItemEngravingComponent::new);
+    public static RegistryObject<Item> COMPUTING_COMPONENT = ITEMS.register("computing_component", ItemComputingComponent::new);
 }
