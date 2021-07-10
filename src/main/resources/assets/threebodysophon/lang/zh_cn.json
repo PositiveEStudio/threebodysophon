@@ -5,6 +5,7 @@
   "item.threebodysophon.acceleration_component": "加速组件",
   "item.threebodysophon.control_core": "控制核心",
   "item.threebodysophon.engraving_component": "雕刻组件",
-  "Item.threebodysophon.computing_component": "计算组件",
+  "item.threebodysophon.computing_component": "计算组件",
+  "item.threebodysophon.quantum_engraving_machine": "量子雕刻机",
   "itemGroup.threebody_sophon_group": "三体 智子"
 }
