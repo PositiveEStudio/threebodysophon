@@ -3,12 +3,9 @@ package xufly.threebodysophon.item;
 import net.minecraft.item.Item;
 import xufly.threebodysophon.creative.ModGroup;
 
-/**
- * @author XuFly
- */
-public class BasicAccelerator extends Item
+public class ItemSophonController extends Item
 {
-    public BasicAccelerator()
+    public ItemSophonController()
     {
         super(new Properties().tab(ModGroup.itemGroup));
     }
