@@ -16,4 +16,6 @@ public class ItemRegistryHandler
 {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ThreebodySophon.MODID);
     public static RegistryObject<Item> PROTON = ITEMS.register("proton", ItemProton::new);
+    public static RegistryObject<Item> SOPHON = ITEMS.register("sophon", ItemSophon::new);
+    public static RegistryObject<Item> SOPHON_CONTROLLER = ITEMS.register("sophon_controller", ItemSophonController::new);
 }
