@@ -1,11 +1,4 @@
 {
-  "item.threebodysophon.acceleration_component": "加速组件",
-  "item.threebodysophon.basic_accelerator": "基础加速器",
-  "item.threebodysophon.circuit_computing_component": "电路计算组件",
-  "item.threebodysophon.control_core": "控制核心",
-  "item.threebodysophon.engraving_component": "雕刻组件",
-  "item.threebodysophon.material_singularity_17": "17形物质奇点",
   "item.threebodysophon.proton": "质子",
-  "block.threebodysophon.quantum_engraving_machine": "量子雕刻机",
   "itemGroup.threebody_sophon_group": "三体 智子"
 }
