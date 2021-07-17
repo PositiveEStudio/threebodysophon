@@ -18,4 +18,5 @@ public class ItemRegistryHandler
     public static RegistryObject<Item> PROTON = ITEMS.register("proton", ItemProton::new);
     public static RegistryObject<Item> MATERIAL_SINGULARITY_17 = ITEMS.register("material_singularity_17", ItemMaterialSingularity17::new);
     public static RegistryObject<Item> BASICACCELERATOR = ITEMS.register("basic_accelerator", ItemMaterialSingularity17::new);
+    public static RegistryObject<Item> SOPHON = ITEMS.register("Spohon", ItemSophon::new);
 }
