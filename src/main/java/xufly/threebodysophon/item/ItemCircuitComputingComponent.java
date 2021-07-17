@@ -7,9 +7,9 @@ import xufly.threebodysophon.creative.ModGroup;
  * @author XuFly
  */
 
-public class ItemComputingComponent extends Item
+public class ItemCircuitComputingComponent extends Item
 {
-    public ItemComputingComponent()
+    public ItemCircuitComputingComponent()
     {
         super(new Properties().tab(ModGroup.itemGroup));
     }

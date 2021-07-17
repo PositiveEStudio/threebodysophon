@@ -15,6 +15,7 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import xufly.threebodysophon.block.BlockRegistryHandler;
 import xufly.threebodysophon.item.ItemRegistryHandler;
 
 import java.util.stream.Collectors;
@@ -44,6 +45,7 @@ public class ThreebodySophon
         MinecraftForge.EVENT_BUS.register(this);
 
         ItemRegistryHandler.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        BlockRegistryHandler.BLOCKs.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     private void setup(final FMLCommonSetupEvent event)
