@@ -9,8 +9,6 @@ import xufly.threebodysophon.creative.ModGroup;
 
 public class ItemProton extends Item
 {
-    public static final String name = "proton";
-
     public ItemProton()
     {
         super(new Properties().tab(ModGroup.itemGroup).stacksTo(1));
