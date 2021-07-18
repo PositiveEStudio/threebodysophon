@@ -1,7 +1,6 @@
 package xufly.threebodysophon;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -48,9 +47,7 @@ public class ThreebodySophon
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+        LOGGER.info("Mod load {}", MODID);
     }
 
     private void doClientStuff(final FMLClientSetupEvent event)
