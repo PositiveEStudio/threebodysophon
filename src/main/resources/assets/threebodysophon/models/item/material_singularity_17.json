@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "threebodysophon:item/material_singularity"
+    "layer0": "threebodysophon:item/material_singularity_17"
   }
 }
