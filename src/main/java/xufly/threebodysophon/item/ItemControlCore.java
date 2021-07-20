@@ -7,9 +7,9 @@ import xufly.threebodysophon.creative.ModGroup;
  * @author XuFly
  */
 
-public class ItemMaterialSingularity17 extends Item
+public class ItemControlCore extends Item
 {
-    public ItemMaterialSingularity17()
+    public ItemControlCore()
     {
         super(new Properties().tab(ModGroup.itemGroup));
     }
