@@ -42,7 +42,7 @@ public class ThreebodySophon
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-        ItemRegistryHandler.ItemRegister.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ItemRegistryHandler.ITEM_REGISTER.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
     private void setup(final FMLCommonSetupEvent event)
