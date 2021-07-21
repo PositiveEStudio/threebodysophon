@@ -20,4 +20,6 @@ public class ItemRegistryHandler
     public static final RegistryObject<Item> CONTROL_CORE = ITEM_REGISTER.register("control_core", ItemControlCore::new);
     public static final RegistryObject<Item> ACCELERATOR_COMPONENT = ITEM_REGISTER.register("acceleration_component", ItemAccelerationComponent::new);
     public static final RegistryObject<Item> BASIC_ACCELERATOR = ITEM_REGISTER.register("basic_accelerator", ItemBasicAccelerator::new);
+    public static final RegistryObject<Item> STEEL_GEAR = ITEM_REGISTER.register("steel_gear", ItemSteelGear::new);
+    public static final RegistryObject<Item> EXPAND_COMPONENT = ITEM_REGISTER.register("expand_component", ItemExpandComponent::new);
 }

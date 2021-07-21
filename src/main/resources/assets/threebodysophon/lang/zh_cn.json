@@ -1,5 +1,11 @@
 {
   "item.threebodysophon.proton": "质子",
   "item.threebodysophon.material_singularity_17": "17形物质奇点",
+  "item.threebodysophon.control_core": "控制核心",
+  "item.threebodysophon.acceleration_component": "加速组件",
+  "item.threebodysophon.basic_accelerator": "基础加速器",
+  "item.threebodysophon.steel_gear": "钢齿轮",
+  "item.threebodysophon.expand_component": "展开组件",
+  "block.threebodysophon.low_dimensional_expansion_instrument": "低维展开仪",
   "itemGroup.threebody_sophon_group": "三体 智子"
 }

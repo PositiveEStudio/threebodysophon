@@ -4,7 +4,7 @@
 
 [![star](https://gitee.com/xu_fly/threebody-sophon/badge/star.svg?theme=white)](https://gitee.com/xu_fly/threebody-sophon/stargazers)
 
-#### 介绍
+### 介绍
 
 1. 原型介绍
 2. 核心功能及操作方法
@@ -51,9 +51,8 @@
    加速组件 4红石 4末影烛  
    基础加速器 8加速组件 1控制核心  
    钢齿轮 4钢锭  
-   机械组件 3钢锭 2钢齿轮  
-   低维展开仪 4基础加速器 1钢质机壳
-
+   展开组件 3钢锭 2钢齿轮  
+   低维展开仪 4基础加速器 1钢质机壳 4展开组件
 2. 电路蚀刻  
    量子雕刻机 4雕刻组件 4计算组件 1末影之眼  
    雕刻组件 4黑曜石 2石英块 2玻璃  
