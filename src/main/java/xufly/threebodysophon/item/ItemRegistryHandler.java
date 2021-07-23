@@ -1,11 +1,14 @@
 package xufly.threebodysophon.item;
 
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import xufly.threebodysophon.ThreebodySophon;
+import xufly.threebodysophon.block.BlockRegistryHandler;
+import xufly.threebodysophon.creative.ModGroup;
 
 /**
  * @author XuFly
@@ -22,4 +25,6 @@ public class ItemRegistryHandler
     public static final RegistryObject<Item> BASIC_ACCELERATOR = ITEM_REGISTER.register("basic_accelerator", ItemBasicAccelerator::new);
     public static final RegistryObject<Item> STEEL_GEAR = ITEM_REGISTER.register("steel_gear", ItemSteelGear::new);
     public static final RegistryObject<Item> EXPAND_COMPONENT = ITEM_REGISTER.register("expand_component", ItemExpandComponent::new);
+
+    public static final RegistryObject<Item> LOW_DIMENSIONAL_EXPANSION_INSTRUMENT = ITEM_REGISTER.register("low_dimensional_expansion_instrument", () -> new BlockItem(BlockRegistryHandler.LOW_DIMENSIONAL_EXPANSION_INSTRUMENT.get(), new Item.Properties().tab(ModGroup.itemGroup)));
 }
