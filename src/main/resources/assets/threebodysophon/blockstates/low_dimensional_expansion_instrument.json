@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=north": {
       "model": "threebodysophon:block/low_dimensional_expansion_instrument"
+    },
+    "facing=east": {
+      "model": "threebodysophon:block/low_dimensional_expansion_instrument",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "threebodysophon:block/low_dimensional_expansion_instrument",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "threebodysophon:block/low_dimensional_expansion_instrument",
+      "y": 270
     }
   }
 }
