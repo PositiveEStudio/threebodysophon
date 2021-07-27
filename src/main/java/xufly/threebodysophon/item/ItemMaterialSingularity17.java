@@ -11,6 +11,6 @@ public class ItemMaterialSingularity17 extends Item
 {
     public ItemMaterialSingularity17()
     {
-        super(new Properties().tab(ModGroup.itemGroup));
+        super(new Properties().group(ModGroup.itemGroup));
     }
 }

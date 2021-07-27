@@ -12,5 +12,5 @@ import xufly.threebodysophon.block.BlockRegistryHandler;
 public class TileEntityRegistryHandler
 {
     public static final DeferredRegister<TileEntityType<?>> TILE_ENTITY_REGISTER = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, ThreebodySophon.MODID);
-    public static final RegistryObject<TileEntityType<TileEntityLowDimensionalExpansionInstrument>> TILE_ENTITY_LOW_DIMENSIONAL_EXPANSION_INSTRUMENT = TILE_ENTITY_REGISTER.register("tile_entity_low_dimensional_expansion_instrument", () -> TileEntityType.Builder.of(TileEntityLowDimensionalExpansionInstrument::new, BlockRegistryHandler.LOW_DIMENSIONAL_EXPANSION_INSTRUMENT.get()).build(null));
+    public static final RegistryObject<TileEntityType<TileEntityLowDimensionalExpansionInstrument>> TILE_ENTITY_LOW_DIMENSIONAL_EXPANSION_INSTRUMENT = TILE_ENTITY_REGISTER.register("tile_entity_low_dimensional_expansion_instrument", () -> TileEntityType.Builder.create(TileEntityLowDimensionalExpansionInstrument::new, BlockRegistryHandler.LOW_DIMENSIONAL_EXPANSION_INSTRUMENT.get()).build(null));
 }

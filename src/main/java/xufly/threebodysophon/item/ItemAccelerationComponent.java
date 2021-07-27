@@ -11,6 +11,6 @@ public class ItemAccelerationComponent extends Item
 {
     public ItemAccelerationComponent()
     {
-        super(new Properties().tab(ModGroup.itemGroup));
+        super(new Properties().group(ModGroup.itemGroup));
     }
 }

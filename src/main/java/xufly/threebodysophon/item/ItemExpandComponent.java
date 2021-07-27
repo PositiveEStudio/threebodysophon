@@ -11,6 +11,6 @@ public class ItemExpandComponent extends Item
 {
     public ItemExpandComponent()
     {
-        super(new Properties().tab(ModGroup.itemGroup));
+        super(new Properties().group(ModGroup.itemGroup));
     }
 }

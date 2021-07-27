@@ -5,16 +5,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 import xufly.threebodysophon.entity.TileEntityLowDimensionalExpansionInstrument;
 
@@ -26,11 +20,11 @@ import javax.annotation.Nullable;
 
 public class BlockLowDimensionalExpansionInstrument extends Block
 {
-    public static final EnumProperty<Direction> FACING = HorizontalBlock.FACING;
+    public static final EnumProperty<Direction> FACING = HorizontalBlock.HORIZONTAL_FACING;
 
     public BlockLowDimensionalExpansionInstrument()
     {
-        super(AbstractBlock.Properties.of(Material.METAL).harvestTool(ToolType.PICKAXE));
+        super(AbstractBlock.Properties.create(Material.IRON).harvestTool(ToolType.PICKAXE));
     }
 
     @Override
@@ -45,25 +39,4 @@ public class BlockLowDimensionalExpansionInstrument extends Block
     {
         return new TileEntityLowDimensionalExpansionInstrument();
     }
-
-    @Override
-    public ActionResultType use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit)
-    {
-
-        return ActionResultType.SUCCESS;
-    }
-
-    /*@Override
-    public BlockState getStateForPlacement(BlockItemUseContext blockItemUseContext)
-    {
-
-        return this.defaultBlockState().setValue(FACING, blockItemUseContext.getHorizontalDirection().getOpposite());
-    }*/
-
-    /*@Override
-    @Nonnull
-    public StateContainer<Block, BlockState> getStateDefinition()
-    {
-        return new StateContainer<Block,BlockState>()c;
-    }*/
 }

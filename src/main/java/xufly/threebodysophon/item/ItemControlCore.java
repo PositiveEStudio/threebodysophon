@@ -11,6 +11,6 @@ public class ItemControlCore extends Item
 {
     public ItemControlCore()
     {
-        super(new Properties().tab(ModGroup.itemGroup));
+        super(new Properties().group(ModGroup.itemGroup));
     }
 }

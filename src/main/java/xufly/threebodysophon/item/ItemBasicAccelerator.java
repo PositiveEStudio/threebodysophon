@@ -11,6 +11,6 @@ public class ItemBasicAccelerator extends Item
 {
     public ItemBasicAccelerator()
     {
-        super(new Properties().tab(ModGroup.itemGroup));
+        super(new Properties().group(ModGroup.itemGroup));
     }
 }

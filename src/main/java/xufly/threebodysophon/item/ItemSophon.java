@@ -7,6 +7,6 @@ public class ItemSophon extends Item
 {
     public ItemSophon()
     {
-        super(new Properties().tab(ModGroup.itemGroup));
+        super(new Properties().group(ModGroup.itemGroup));
     }
 }

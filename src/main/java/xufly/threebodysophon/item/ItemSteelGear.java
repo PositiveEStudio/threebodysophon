@@ -11,6 +11,6 @@ public class ItemSteelGear extends Item
 {
     public ItemSteelGear()
     {
-        super(new Properties().tab(ModGroup.itemGroup));
+        super(new Properties().group(ModGroup.itemGroup));
     }
 }

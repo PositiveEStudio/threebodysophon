@@ -11,6 +11,6 @@ public class ItemProton extends Item
 {
     public ItemProton()
     {
-        super(new Properties().tab(ModGroup.itemGroup).stacksTo(1));
+        super(new Properties().group(ModGroup.itemGroup).maxStackSize(1));
     }
 }

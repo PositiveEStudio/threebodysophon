@@ -57,13 +57,13 @@ public class ThreebodySophon
     private void doClientStuff(final FMLClientSetupEvent event)
     {
         // do something that can only be done on the client
-        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().options);
+        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().debug);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
         // some example code to dispatch IMC to another mod
-        InterModComms.sendTo("threebodysophon", "helloworld", () ->
+        InterModComms.sendTo("threebodysophon", "hello world", () ->
         {
             LOGGER.info("Hello world from the MDK");
             return "Hello world";
