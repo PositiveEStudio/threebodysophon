@@ -13,7 +13,7 @@ public class EntityRegistryHandler
     public static final EntityType<EntitySophon> SOPHON = register("sophon", EntityType.Builder.create(EntitySophon::new, EntityClassification.MISC).size(2.0F, 2.0F).trackingRange(20).immuneToFire().build("sophon"));
 
     private static <T extends Entity> EntityType<T> register(String name, EntityType<T> type)
-    { // 用于避免空指针
+    {
         ENTITY_REGISTER.register(name, () -> type);
         return type;
     }
