@@ -4,10 +4,6 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import xufly.threebodysophon.item.ItemRegistryHandler;
 
-/**
- * @author XuFly
- */
-
 public class ThreebodySophonGroup extends ItemGroup
 {
     public ThreebodySophonGroup()
@@ -16,7 +12,7 @@ public class ThreebodySophonGroup extends ItemGroup
     }
 
     @Override
-    public ItemStack makeIcon()
+    public ItemStack createIcon()
     {
         return new ItemStack(ItemRegistryHandler.PROTON.get());
     }

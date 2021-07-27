@@ -10,10 +10,6 @@ import xufly.threebodysophon.ThreebodySophon;
 import xufly.threebodysophon.block.BlockRegistryHandler;
 import xufly.threebodysophon.creative.ModGroup;
 
-/**
- * @author XuFly
- */
-
 @Mod.EventBusSubscriber
 public class ItemRegistryHandler
 {

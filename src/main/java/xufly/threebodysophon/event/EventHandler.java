@@ -5,10 +5,6 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-/**
- * @author XuFly
- */
-
 @Mod.EventBusSubscriber(value = Dist.CLIENT)
 public class EventHandler
 {

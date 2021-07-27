@@ -1,4 +1,4 @@
-package xufly.threebodysophon.entity;
+package xufly.threebodysophon.tileentity;
 
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;

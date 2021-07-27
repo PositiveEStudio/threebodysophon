@@ -10,13 +10,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.ToolType;
-import xufly.threebodysophon.entity.TileEntityLowDimensionalExpansionInstrument;
+import xufly.threebodysophon.tileentity.TileEntityLowDimensionalExpansionInstrument;
 
 import javax.annotation.Nullable;
-
-/**
- * @author XuFly
- */
 
 public class BlockLowDimensionalExpansionInstrument extends Block
 {
