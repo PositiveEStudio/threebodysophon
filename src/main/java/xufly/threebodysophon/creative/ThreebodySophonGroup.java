@@ -14,6 +14,6 @@ public class ThreebodySophonGroup extends ItemGroup
     @Override
     public ItemStack createIcon()
     {
-        return new ItemStack(ItemRegistryHandler.PROTON.get());
+        return new ItemStack(ItemRegistryHandler.PROTON);
     }
 }

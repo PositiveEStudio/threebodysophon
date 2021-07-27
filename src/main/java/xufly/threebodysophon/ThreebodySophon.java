@@ -8,11 +8,12 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import xufly.threebodysophon.block.BlockRegistryHandler;
+import xufly.threebodysophon.client.renderer.entity.EntityRendererManager;
 import xufly.threebodysophon.entity.EntityRegistryHandler;
 import xufly.threebodysophon.item.ItemRegistryHandler;
 import xufly.threebodysophon.tileentity.TileEntityRegistryHandler;
 
-@Mod("threebodysophon")
+@Mod(ThreebodySophon.MODID)
 public class ThreebodySophon
 {
     public static final String MODID = "threebodysophon";
@@ -38,6 +39,6 @@ public class ThreebodySophon
 
     private void doClientStuff(final FMLClientSetupEvent event)
     {
-
+        EntityRendererManager.register();
     }
 }
