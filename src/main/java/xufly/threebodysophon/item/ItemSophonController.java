@@ -10,7 +10,7 @@ public class ItemSophonController extends Item
 {
     public ItemSophonController()
     {
-        super(new Properties().group(ModGroup.itemGroup));
+        super(new Properties().group(ModGroup.itemGroup).maxStackSize(1));
     }
 
     @Override

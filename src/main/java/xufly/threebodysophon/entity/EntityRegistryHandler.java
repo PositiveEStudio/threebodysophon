@@ -10,7 +10,7 @@ import xufly.threebodysophon.ThreebodySophon;
 public class EntityRegistryHandler
 {
     public static final DeferredRegister<EntityType<?>> ENTITY_REGISTER = DeferredRegister.create(ForgeRegistries.ENTITIES, ThreebodySophon.MODID);
-    public static final EntityType<EntitySophon> SOPHON = register("sophon", EntityType.Builder.create(EntitySophon::new, EntityClassification.MISC).size(2.0F, 2.0F).trackingRange(20).immuneToFire().build("sophon"));
+    public static final EntityType<EntitySophon> SOPHON = register("sophon", EntityType.Builder.<EntitySophon>create(EntitySophon::new, EntityClassification.MISC).size(2.0F, 2.0F).trackingRange(20).immuneToFire().build("sophon"));
 
     private static <T extends Entity> EntityType<T> register(String name, EntityType<T> type)
     {
