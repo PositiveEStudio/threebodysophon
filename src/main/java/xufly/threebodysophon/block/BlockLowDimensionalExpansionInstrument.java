@@ -6,9 +6,11 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.state.DirectionProperty;
+import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.state.EnumProperty;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -25,7 +27,7 @@ import javax.annotation.Nullable;
 
 public class BlockLowDimensionalExpansionInstrument extends Block
 {
-    public static final DirectionProperty FACING = HorizontalBlock.FACING;
+    public static final EnumProperty<Direction> FACING = HorizontalBlock.FACING;
 
     public BlockLowDimensionalExpansionInstrument()
     {
@@ -52,9 +54,17 @@ public class BlockLowDimensionalExpansionInstrument extends Block
         return ActionResultType.SUCCESS;
     }
 
-    /*@Override
+    @Override
     public BlockState getStateForPlacement(BlockItemUseContext blockItemUseContext)
     {
+
         return this.defaultBlockState().setValue(FACING, blockItemUseContext.getHorizontalDirection().getOpposite());
+    }
+
+    /*@Override
+    @Nonnull
+    public StateContainer<Block, BlockState> getStateDefinition()
+    {
+        return new StateContainer<Block,BlockState>()c;
     }*/
 }
