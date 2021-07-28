@@ -3,8 +3,6 @@ package xufly.threebodysophon.client.gui.screen;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.widget.TextFieldWidget;
-import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.client.util.InputMappings;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.StringTextComponent;
@@ -14,15 +12,15 @@ import xufly.threebodysophon.ThreebodySophon;
 public class SophonControllerScreen extends Screen
 {
     private static final ResourceLocation TEXTURE = new ResourceLocation(ThreebodySophon.MODID, "textures/gui/sophon_controller.png");
-    private int xSize = 176;
-    private int ySize = 166;
+    private final int xSize = 176;
+    private final int ySize = 166;
     private int guiLeft;
     private int guiTop;
     private boolean usePos;
 
     protected SophonControllerScreen()
     {
-        super(new StringTextComponent("sophon_controller"));
+        super(new StringTextComponent("screen.sophon_controller.title"));
         this.guiLeft = (this.width - xSize) / 2;
         this.usePos = true;
     }
@@ -30,7 +28,7 @@ public class SophonControllerScreen extends Screen
     @Override
     protected void init()
     {
-        this.guiLeft = (this.width - xSize) / 2;
+        this.guiLeft = (this.width - this.xSize) / 2;
         this.guiTop = (this.height - this.ySize) / 2;
     }
 

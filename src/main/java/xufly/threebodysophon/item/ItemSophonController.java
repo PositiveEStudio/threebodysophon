@@ -20,7 +20,8 @@ public class ItemSophonController extends Item
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn)
     {
         ItemStack stack = playerIn.getHeldItem(handIn);
-        if (worldIn.isRemote && stack.getOrCreateTag().contains("BindSophon"))
+        //        if (worldIn.isRemote && stack.getOrCreateTag().contains("BindSophon"))
+        if (worldIn.isRemote)
         {
             ScreenLoader.sophonControllerScreen();
         }
