@@ -39,7 +39,7 @@ public class SophonGui extends AbstractGui
             for (int i = 0; i < texts.size(); i++)
             {
                 String text = texts.getString(i);
-                this.fontRenderer.drawText(this.matrixStack, new StringTextComponent(text), (float) (this.width - this.fontRenderer.getStringWidth(text)) / 2.0F, (this.height - texts.size() * 16) / 2.0F + i * 16.0F, 0xFF9999);
+                this.fontRenderer.drawTextWithShadow(this.matrixStack, new StringTextComponent(text), (float) (this.width - this.fontRenderer.getStringWidth(text)) / 2.0F, (this.height - texts.size() * 16) / 2.0F + i * 16.0F, 0xFF9999);
             }
         }
     }

@@ -1,9 +1,12 @@
 package xufly.threebodysophon.item;
 
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.util.ActionResultType;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.world.World;
+import xufly.threebodysophon.client.gui.screen.ScreenLoader;
 import xufly.threebodysophon.creative.ModGroup;
 
 public class ItemSophonController extends Item
@@ -14,10 +17,13 @@ public class ItemSophonController extends Item
     }
 
     @Override
-    public ActionResultType onItemUse(ItemUseContext context)
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn)
     {
-        ItemStack stack = context.getItem();
-
-        return ActionResultType.SUCCESS;
+        ItemStack stack = playerIn.getHeldItem(handIn);
+        if (worldIn.isRemote && stack.getOrCreateTag().contains("BindSophon"))
+        {
+            ScreenLoader.sophonControllerScreen();
+        }
+        return ActionResult.func_233538_a_(stack, worldIn.isRemote);
     }
 }
