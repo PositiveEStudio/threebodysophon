@@ -11,6 +11,7 @@ import xufly.threebodysophon.block.BlockRegistryHandler;
 import xufly.threebodysophon.client.renderer.entity.EntityRendererManager;
 import xufly.threebodysophon.entity.EntityRegistryHandler;
 import xufly.threebodysophon.item.ItemRegistryHandler;
+import xufly.threebodysophon.network.NetworkHandler;
 import xufly.threebodysophon.tileentity.TileEntityRegistryHandler;
 
 @Mod(ThreebodySophon.MODID)
@@ -34,7 +35,7 @@ public class ThreebodySophon
 
     private void setup(final FMLCommonSetupEvent event)
     {
-
+        event.enqueueWork(NetworkHandler::register);
     }
 
     private void doClientStuff(final FMLClientSetupEvent event)
