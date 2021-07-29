@@ -6,14 +6,12 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
-import net.minecraft.network.PacketBuffer;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 import net.minecraftforge.fml.network.NetworkHooks;
 import xufly.threebodysophon.item.ItemRegistryHandler;
 
@@ -22,9 +20,10 @@ import java.util.UUID;
 public class EntitySophon extends Entity
 {
     private static final DataParameter<Boolean> LOW_DIMENSIONAL_EXPANSION = EntityDataManager.createKey(EntitySophon.class, DataSerializers.BOOLEAN);
+    private static final DataParameter<Boolean> BOUND = EntityDataManager.createKey(EntitySophon.class, DataSerializers.BOOLEAN); // 是否已绑定
     private static final DataParameter<String> DISPLAY_TEXT = EntityDataManager.createKey(EntitySophon.class, DataSerializers.STRING);
     private static final DataParameter<String> TEXT_ON_PLAYER_EYE = EntityDataManager.createKey(EntitySophon.class, DataSerializers.STRING);
-    private static final DataParameter<String> TRACKING_PLAYER = EntityDataManager.createKey(EntitySophon.class,DataSerializers.STRING); // 移动到玩家面前时，该玩家的UUID
+    private static final DataParameter<String> TRACKING_PLAYER = EntityDataManager.createKey(EntitySophon.class, DataSerializers.STRING); // 移动到玩家面前时，该玩家的UUID
 
     public EntitySophon(EntityType<?> entityTypeIn, World worldIn)
     {
@@ -40,7 +39,8 @@ public class EntitySophon extends Entity
     @Override
     protected void registerData()
     {
-        this.dataManager.register(LOW_DIMENSIONAL_EXPANSION, false);
+        this.dataManager.register(LOW_DIMENSIONAL_EXPANSION, true);
+        this.dataManager.register(BOUND, false);
         this.dataManager.register(DISPLAY_TEXT, "");
         this.dataManager.register(TEXT_ON_PLAYER_EYE, "");
         this.dataManager.register(TRACKING_PLAYER, "");
@@ -54,7 +54,7 @@ public class EntitySophon extends Entity
     public void setLowDimensionalExpansion(boolean lowDimensionalExpansion)
     {
         this.dataManager.set(LOW_DIMENSIONAL_EXPANSION, lowDimensionalExpansion);
-        this.setInvisible(lowDimensionalExpansion);
+        this.setInvisible(!lowDimensionalExpansion);
     }
 
     public void setTrackingPlayer(UUID trackingPlayer)
@@ -65,11 +65,14 @@ public class EntitySophon extends Entity
     @Override
     public ActionResultType processInitialInteract(PlayerEntity player, Hand hand) // 玩家拿着控制器右键时
     {
-        ItemStack stack = player.getHeldItem(hand);
-        if (stack.getItem() == ItemRegistryHandler.SOPHON_CONTROLLER && !stack.getOrCreateTag().contains("BindSophon"))
-        {
-            stack.getOrCreateTag().putInt("BindSophon", this.getEntityId());
-            return ActionResultType.func_233537_a_(this.world.isRemote);
+        if (this.getLowDimensionalExpansion() && !this.dataManager.get(BOUND)) {
+            ItemStack stack = player.getHeldItem(hand);
+            if (stack.getItem() == ItemRegistryHandler.SOPHON_CONTROLLER && !stack.getOrCreateTag().hasUniqueId("BindSophon"))
+            {
+                stack.getOrCreateTag().putUniqueId("BindSophon", this.getUniqueID()); // 绑定智子
+                this.dataManager.set(BOUND, true);
+                return ActionResultType.func_233537_a_(this.world.isRemote);
+            }
         }
         return super.processInitialInteract(player, hand);
     }
@@ -87,6 +90,10 @@ public class EntitySophon extends Entity
         {
             this.setLowDimensionalExpansion(compound.getBoolean("expansion"));
         }
+        if (compound.contains("bound"))
+        {
+            this.dataManager.set(BOUND, compound.getBoolean("bound"));
+        }
         if (compound.contains("text"))
         {
             this.dataManager.set(DISPLAY_TEXT, compound.getString("text"));
@@ -95,7 +102,8 @@ public class EntitySophon extends Entity
         {
             this.dataManager.set(TEXT_ON_PLAYER_EYE, compound.getString("TextOnPlayerEye"));
         }
-        if (compound.contains("TrackingPlayer")) {
+        if (compound.contains("TrackingPlayer"))
+        {
             this.dataManager.set(TRACKING_PLAYER, compound.getString("TrackingPlayer"));
         }
     }
@@ -104,6 +112,7 @@ public class EntitySophon extends Entity
     protected void writeAdditional(CompoundNBT compound)
     {
         compound.putBoolean("expansion", this.getLowDimensionalExpansion());
+        compound.putBoolean("bound", this.dataManager.get(BOUND));
         compound.putString("text", this.dataManager.get(DISPLAY_TEXT));
         compound.putString("TextOnPlayerEye", this.dataManager.get(TEXT_ON_PLAYER_EYE));
         compound.putString("TrackingPlayer", this.dataManager.get(TRACKING_PLAYER));
