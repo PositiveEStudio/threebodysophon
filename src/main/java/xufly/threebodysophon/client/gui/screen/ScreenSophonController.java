@@ -15,7 +15,7 @@ import xufly.threebodysophon.entity.EntitySophon;
 
 import java.util.UUID;
 
-public class SophonControllerScreen extends Screen
+public class ScreenSophonController extends Screen
 {
     private static final ResourceLocation TEXTURE = new ResourceLocation(ThreebodySophon.MODID, "textures/gui/sophon_controller.png");
     private final int xSize = 176;
@@ -28,7 +28,7 @@ public class SophonControllerScreen extends Screen
     private TextFieldWidget textFieldZ;
     private boolean usePos;
 
-    protected SophonControllerScreen(UUID sophonId)
+    protected ScreenSophonController(UUID sophonId)
     {
         super(new TranslationTextComponent("screen.sophon_controller.title"));
         this.guiLeft = (this.width - xSize) / 2;

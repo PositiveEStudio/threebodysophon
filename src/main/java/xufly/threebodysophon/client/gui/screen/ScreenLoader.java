@@ -7,6 +7,6 @@ import java.util.UUID;
 public class ScreenLoader
 {
     public static void sophonControllerScreen(UUID sophonId) {
-        Minecraft.getInstance().displayGuiScreen(new SophonControllerScreen(sophonId));
+        Minecraft.getInstance().displayGuiScreen(new ScreenSophonController(sophonId));
     }
 }
