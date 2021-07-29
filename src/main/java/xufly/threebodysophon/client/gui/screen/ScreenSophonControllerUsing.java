@@ -34,15 +34,15 @@ public class ScreenSophonControllerUsing extends Screen
     @Override
     public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks)
     {
-        this.renderBackground(matrixStack);
         super.render(matrixStack, mouseX, mouseY, partialTicks);
+        this.renderBackground(matrixStack);
         RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
 
         this.minecraft.getTextureManager().bindTexture(TEXTURE);
-        this.blit(matrixStack, this.guiLeft, this.guiTop,0,0,this.xSize, this.ySize);
+        this.blit(matrixStack, this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 
-        TranslationTextComponent title = new TranslationTextComponent("screen.sophon_controller.title");
-        this.font.drawText(matrixStack, title,(this.width - this.font.getStringWidth(title.getString())) / 2.0F,this.guiTop + 6.0F,0xFF9999);
+        TranslationTextComponent title = new TranslationTextComponent("screen.sophon_controller_using.title");
+        this.font.drawText(matrixStack, title, (this.width - this.font.getStringWidth(title.getString())) / 2.0F, this.guiTop + 6.0F, 0xFF9999);
     }
 
     @Override
@@ -61,4 +61,5 @@ public class ScreenSophonControllerUsing extends Screen
         }
         return super.keyPressed(keyCode, scanCode, modifiers);
     }
+
 }

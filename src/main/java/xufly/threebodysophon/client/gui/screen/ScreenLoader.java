@@ -5,15 +5,15 @@ import net.minecraft.entity.player.PlayerEntity;
 
 public class ScreenLoader
 {
-    public static void sophonControllerScreen(PlayerEntity playerin)
+    public static void sophonControllerScreen(PlayerEntity playerIn)
     {
-        if (playerin.isSneaking())
+        if (playerIn.isSneaking())
         {
-            Minecraft.getInstance().displayGuiScreen(new ScreenSophonControllerUsing());
+            Minecraft.getInstance().displayGuiScreen(new ScreenSophonControllerBinding());
         }
         else
         {
-            Minecraft.getInstance().displayGuiScreen(new ScreenSophonControllerBinding());
+            Minecraft.getInstance().displayGuiScreen(new ScreenSophonControllerUsing());
         }
     }
 }
