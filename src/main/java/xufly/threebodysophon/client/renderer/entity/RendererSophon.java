@@ -33,7 +33,7 @@ public class RendererSophon extends EntityRenderer<EntitySophon>
     public void render(EntitySophon entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn)
     {
         super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
-        if (!entityIn.getLowDimensionalExpansion())
+        if (entityIn.getLowDimensionalExpansion())
         {
             matrixStackIn.push();
             IVertexBuilder builder = bufferIn.getBuffer(this.model.getRenderType(this.getEntityTexture(entityIn)));

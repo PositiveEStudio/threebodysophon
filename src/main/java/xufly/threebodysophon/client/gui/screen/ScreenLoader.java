@@ -1,19 +1,12 @@
 package xufly.threebodysophon.client.gui.screen;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.PlayerEntity;
+
+import java.util.UUID;
 
 public class ScreenLoader
 {
-    public static void sophonControllerScreen(PlayerEntity playerIn)
-    {
-        if (playerIn.isSneaking())
-        {
-            Minecraft.getInstance().displayGuiScreen(new ScreenSophonControllerBinding());
-        }
-        else
-        {
-            Minecraft.getInstance().displayGuiScreen(new ScreenSophonControllerUsing());
-        }
+    public static void sophonControllerScreen(UUID sophonId) {
+        Minecraft.getInstance().displayGuiScreen(new SophonControllerScreen(sophonId));
     }
 }
