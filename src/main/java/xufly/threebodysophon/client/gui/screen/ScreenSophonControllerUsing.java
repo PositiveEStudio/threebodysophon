@@ -9,19 +9,18 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import xufly.threebodysophon.ThreebodySophon;
 
-public class SophonControllerScreen extends Screen
+public class ScreenSophonControllerUsing extends Screen
 {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(ThreebodySophon.MODID, "textures/gui/sophon_controller.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(ThreebodySophon.MODID, "textures/gui/sophon_controller_using.png");
     private final int xSize = 176;
     private final int ySize = 166;
     private int guiLeft;
     private int guiTop;
     private boolean usePos;
 
-    protected SophonControllerScreen()
+    protected ScreenSophonControllerUsing()
     {
-        super(new StringTextComponent("screen.sophon_controller.title"));
-        this.guiLeft = (this.width - xSize) / 2;
+        super(new StringTextComponent("screen.sophon_controller_using.title"));
         this.usePos = true;
     }
 

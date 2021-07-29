@@ -23,7 +23,7 @@ public class ItemSophonController extends Item
         //        if (worldIn.isRemote && stack.getOrCreateTag().contains("BindSophon"))
         if (worldIn.isRemote)
         {
-            ScreenLoader.sophonControllerScreen();
+                ScreenLoader.sophonControllerScreen(playerIn);
         }
         return ActionResult.func_233538_a_(stack, worldIn.isRemote);
     }
