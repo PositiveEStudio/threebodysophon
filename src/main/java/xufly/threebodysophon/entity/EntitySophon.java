@@ -6,14 +6,12 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
-import net.minecraft.network.PacketBuffer;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 import net.minecraftforge.fml.network.NetworkHooks;
 import xufly.threebodysophon.item.ItemRegistryHandler;
 
@@ -40,7 +38,7 @@ public class EntitySophon extends Entity
     @Override
     protected void registerData()
     {
-        this.dataManager.register(LOW_DIMENSIONAL_EXPANSION, false);
+        this.dataManager.register(LOW_DIMENSIONAL_EXPANSION, true);
         this.dataManager.register(DISPLAY_TEXT, "");
         this.dataManager.register(TEXT_ON_PLAYER_EYE, "");
         this.dataManager.register(TRACKING_PLAYER, "");
