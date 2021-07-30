@@ -12,5 +12,7 @@
   "item.threebodysophon.sophon_controller": "智子控制器",
   "screen.sophon_controller.title": "智子控制器",
   "screen.sophon_controller.pos": "位置设定",
-  "screen.sophon_controller.change_mode": "切换"
+  "screen.sophon_controller.change_mode": "切换",
+  "message.sophon_controller.hint1": "请先右键低维展开智子进行绑定",
+  "entity.threebodysophon.sophon": "智子"
 }

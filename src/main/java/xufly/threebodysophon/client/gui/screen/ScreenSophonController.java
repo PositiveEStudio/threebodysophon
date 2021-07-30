@@ -79,9 +79,9 @@ public class ScreenSophonController extends Screen
                     }
                 }
             }
-            this.textFieldX.setText(String.valueOf(sophon.getPosX()));
-            this.textFieldY.setText(String.valueOf(sophon.getPosY()));
-            this.textFieldZ.setText(String.valueOf(sophon.getPosZ()));
+            this.textFieldX.setText(String.valueOf((int) sophon.getPosX()));
+            this.textFieldY.setText(String.valueOf((int) sophon.getPosY()));
+            this.textFieldZ.setText(String.valueOf((int) sophon.getPosZ()));
         }
         catch (NullPointerException e)
         {
