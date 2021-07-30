@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
 
-public class SophonControllerScreen extends Screen
+public class ScreenSophonController extends Screen
 {
     private static final ResourceLocation TEXTURE = new ResourceLocation(ThreebodySophon.MODID, "textures/gui/sophon_controller.png");
     private final int xSize = 176;
@@ -42,7 +42,7 @@ public class SophonControllerScreen extends Screen
     private boolean numberIncorrect;
     private int page;
 
-    protected SophonControllerScreen(UUID sophonId)
+    protected ScreenSophonController(UUID sophonId)
     {
         super(new TranslationTextComponent("screen.sophon_controller.title"));
         this.guiLeft = (this.width - xSize) / 2;
@@ -76,7 +76,7 @@ public class SophonControllerScreen extends Screen
                 public void onPress()
                 {
                     super.onPress();
-                    NetworkHandler.SOPHON_EXPANSION.sendToServer(new CSophonExpansionPacket(SophonControllerScreen.this.sophonId, this.isChecked()));
+                    NetworkHandler.SOPHON_EXPANSION.sendToServer(new CSophonExpansionPacket(ScreenSophonController.this.sophonId, this.isChecked()));
                 }
             });
         }
@@ -139,11 +139,11 @@ public class SophonControllerScreen extends Screen
                         @Override
                         public void onPress()
                         {
-                            int i1 = (this.y - SophonControllerScreen.this.guiTop - 56) / 14;
-                            int j1 = (this.x - SophonControllerScreen.this.guiLeft - 9) / 53;
-                            if ((i1 * 3) + (SophonControllerScreen.this.page * 9) + j1 < list.size())
+                            int i1 = (this.y - ScreenSophonController.this.guiTop - 56) / 14;
+                            int j1 = (this.x - ScreenSophonController.this.guiLeft - 9) / 53;
+                            if ((i1 * 3) + (ScreenSophonController.this.page * 9) + j1 < list.size())
                             {
-                                NetworkHandler.SOPHON_POSITION.sendToServer(new CSophonPositionPacket(SophonControllerScreen.this.sophonId, false, 0, 0, 0, list.get((i1 * 3) + (SophonControllerScreen.this.page * 9) + j1).getUniqueID()));
+                                NetworkHandler.SOPHON_POSITION.sendToServer(new CSophonPositionPacket(ScreenSophonController.this.sophonId, false, 0, 0, 0, list.get((i1 * 3) + (ScreenSophonController.this.page * 9) + j1).getUniqueID()));
                             }
                         }
                     });

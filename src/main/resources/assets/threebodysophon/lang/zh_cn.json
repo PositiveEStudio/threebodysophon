@@ -17,6 +17,6 @@
   "screen.sophon_controller.change_mode": "切换",
   "screen.sophon_controller.done": "确定",
   "screen.catapult_controller.number_incorrect": "数值不正确",
-  "message.sophon_controller.hint1": "请先右键低维展开智子进行绑定",
+  "message.sophon_controller.hint": "请先右键低维展开的智子进行绑定",
   "entity.threebodysophon.sophon": "智子"
 }
