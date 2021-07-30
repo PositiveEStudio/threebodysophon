@@ -11,6 +11,10 @@
   "item.threebodysophon.expand_component": "展开组件",
   "item.threebodysophon.sophon_controller": "智子控制器",
   "screen.sophon_controller.title": "智子控制器",
+  "screen.sophon_controller.expansion": "低维展开",
   "screen.sophon_controller.pos": "位置设定",
-  "screen.sophon_controller.change_mode": "切换"
+  "screen.sophon_controller.clear": "清空",
+  "screen.sophon_controller.change_mode": "切换",
+  "screen.sophon_controller.done": "确定",
+  "screen.catapult_controller.number_incorrect": "数值不正确"
 }
