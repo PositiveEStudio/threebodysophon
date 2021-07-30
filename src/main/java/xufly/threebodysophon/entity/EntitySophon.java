@@ -1,7 +1,9 @@
 package xufly.threebodysophon.entity;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntitySize;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.Pose;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -11,16 +13,20 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 import xufly.threebodysophon.item.ItemRegistryHandler;
 
 import java.util.UUID;
+import java.util.Vector;
 
 public class EntitySophon extends Entity
 {
     private static final DataParameter<Boolean> LOW_DIMENSIONAL_EXPANSION = EntityDataManager.createKey(EntitySophon.class, DataSerializers.BOOLEAN);
     private static final DataParameter<Boolean> BOUND = EntityDataManager.createKey(EntitySophon.class, DataSerializers.BOOLEAN); // 是否已绑定
+    private static final DataParameter<Boolean> TRACK_PLAYER = EntityDataManager.createKey(EntitySophon.class, DataSerializers.BOOLEAN);
     private static final DataParameter<String> DISPLAY_TEXT = EntityDataManager.createKey(EntitySophon.class, DataSerializers.STRING);
     private static final DataParameter<String> TEXT_ON_PLAYER_EYE = EntityDataManager.createKey(EntitySophon.class, DataSerializers.STRING);
     private static final DataParameter<String> TRACKING_PLAYER = EntityDataManager.createKey(EntitySophon.class, DataSerializers.STRING); // 移动到玩家面前时，该玩家的UUID
@@ -41,6 +47,7 @@ public class EntitySophon extends Entity
     {
         this.dataManager.register(LOW_DIMENSIONAL_EXPANSION, true);
         this.dataManager.register(BOUND, false);
+        this.dataManager.register(TRACK_PLAYER, false);
         this.dataManager.register(DISPLAY_TEXT, "");
         this.dataManager.register(TEXT_ON_PLAYER_EYE, "");
         this.dataManager.register(TRACKING_PLAYER, "");
@@ -60,27 +67,59 @@ public class EntitySophon extends Entity
     public void setTrackingPlayer(UUID trackingPlayer)
     {
         this.dataManager.set(TRACKING_PLAYER, trackingPlayer.toString());
+        this.dataManager.set(TRACK_PLAYER, true);
+    }
+
+    public void setPositionByController(double x, double y, double z)
+    {
+        if (this.world.isAreaLoaded(new BlockPos(x, y, z), 0))
+        {
+            this.setPosition(x, y, z);
+            this.dataManager.set(TRACK_PLAYER, false);
+        }
+    }
+
+    @Override
+    public void tick()
+    {
+        super.tick();
+        if (this.dataManager.get(TRACK_PLAYER)) {
+            try
+            {
+                PlayerEntity player = this.world.getPlayerByUuid(UUID.fromString(this.dataManager.get(TRACKING_PLAYER)));
+                Vector3d vector3d = player.getLookVec();
+                this.setPosition(player.getPosX() + vector3d.x * 5, player.getPosY() + vector3d.y * 5, player.getPosZ() + vector3d.z * 5);
+            } catch (IllegalArgumentException | NullPointerException ignored) {
+            }
+        }
     }
 
     @Override
     public ActionResultType processInitialInteract(PlayerEntity player, Hand hand) // 玩家拿着控制器右键时
     {
-        if (this.getLowDimensionalExpansion() && !this.dataManager.get(BOUND)) {
+        if (this.getLowDimensionalExpansion() && !this.dataManager.get(BOUND))
+        {
             ItemStack stack = player.getHeldItem(hand);
             if (stack.getItem() == ItemRegistryHandler.SOPHON_CONTROLLER && !stack.getOrCreateTag().hasUniqueId("BindSophon"))
             {
                 stack.getOrCreateTag().putUniqueId("BindSophon", this.getUniqueID()); // 绑定智子
                 this.dataManager.set(BOUND, true);
-                return ActionResultType.func_233537_a_(this.world.isRemote);
+                return ActionResultType.CONSUME;
             }
         }
-        return super.processInitialInteract(player, hand);
+        return ActionResultType.SUCCESS;
     }
 
     @Override
     public boolean canBeCollidedWith()
     {
-        return this.isAlive();
+        return this.isAlive() && !this.dataManager.get(BOUND);
+    }
+
+    @Override
+    protected float getEyeHeight(Pose poseIn, EntitySize sizeIn)
+    {
+        return 1.0F;
     }
 
     @Override
@@ -93,6 +132,10 @@ public class EntitySophon extends Entity
         if (compound.contains("bound"))
         {
             this.dataManager.set(BOUND, compound.getBoolean("bound"));
+        }
+        if (compound.contains("TrackPlayer"))
+        {
+            this.dataManager.set(TRACK_PLAYER, compound.getBoolean("TrackPlayer"));
         }
         if (compound.contains("text"))
         {
@@ -113,6 +156,7 @@ public class EntitySophon extends Entity
     {
         compound.putBoolean("expansion", this.getLowDimensionalExpansion());
         compound.putBoolean("bound", this.dataManager.get(BOUND));
+        compound.putBoolean("TrackPlayer", this.dataManager.get(TRACK_PLAYER));
         compound.putString("text", this.dataManager.get(DISPLAY_TEXT));
         compound.putString("TextOnPlayerEye", this.dataManager.get(TEXT_ON_PLAYER_EYE));
         compound.putString("TrackingPlayer", this.dataManager.get(TRACKING_PLAYER));
