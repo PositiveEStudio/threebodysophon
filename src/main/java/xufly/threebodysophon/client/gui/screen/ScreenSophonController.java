@@ -16,6 +16,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import xufly.threebodysophon.ThreebodySophon;
 import xufly.threebodysophon.entity.EntitySophon;
 import xufly.threebodysophon.network.NetworkHandler;
+import xufly.threebodysophon.network.client.CSophonDisplayTextPacket;
 import xufly.threebodysophon.network.client.CSophonExpansionPacket;
 import xufly.threebodysophon.network.client.CSophonPositionPacket;
 
@@ -38,6 +39,7 @@ public class ScreenSophonController extends Screen
     private TextFieldWidget textFieldX;
     private TextFieldWidget textFieldY;
     private TextFieldWidget textFieldZ;
+    private TextFieldWidget textFieldDisplayText;
     private boolean usePos;
     private boolean numberIncorrect;
     private int page;
@@ -45,7 +47,6 @@ public class ScreenSophonController extends Screen
     protected ScreenSophonController(UUID sophonId)
     {
         super(new TranslationTextComponent("screen.sophon_controller.title"));
-        this.guiLeft = (this.width - xSize) / 2;
         this.usePos = true;
         this.numberIncorrect = false;
         this.sophonId = sophonId;
@@ -86,6 +87,7 @@ public class ScreenSophonController extends Screen
         }
 
         this.initPosSetPanel();
+        this.initDisplayTextPanel();
     }
 
     @Override
@@ -102,6 +104,7 @@ public class ScreenSophonController extends Screen
         this.font.drawText(matrixStack, title, (this.width - this.font.getStringWidth(title.getString())) / 2.0F, this.guiTop + 6.0F, 0xFF9999);
 
         this.renderPosSetPanel(matrixStack, mouseX, mouseY, partialTicks);
+        this.renderDisplayTextPanel(matrixStack, mouseX, mouseY, partialTicks);
     }
 
 
@@ -151,26 +154,26 @@ public class ScreenSophonController extends Screen
             }
 
             this.addButton(new ImageButton(this.guiLeft + 103, this.guiTop + 39, 21, 12, 176, 24, 12, TEXTURE, (p) -> {
-                if (this.page < Math.ceil(list.size() / 9.0D)) this.page++;
+                if (this.page < Math.ceil(list.size() / 9.0D) - 1) this.page++;
             }));
             this.addButton(new ImageButton(this.guiLeft + 81, this.guiTop + 39, 21, 12, 197, 24, 12, TEXTURE, (p) -> {
                 if (this.page > 0) this.page--;
             }));
         }
 
-        this.textFieldX = new TextFieldWidget(this.font, this.guiLeft + 54, this.guiTop + 58, 78, 9, new TranslationTextComponent("screen.catapult_controller.field_x"));
+        this.textFieldX = new TextFieldWidget(this.font, this.guiLeft + 54, this.guiTop + 58, 78, 9, new TranslationTextComponent("screen.sophon_controller.field_x"));
         this.textFieldX.setMaxStringLength(18);
         this.textFieldX.setEnableBackgroundDrawing(false);
         this.textFieldX.setTextColor(0x62FF7F);
         this.children.add(this.textFieldX);
 
-        this.textFieldY = new TextFieldWidget(this.font, this.guiLeft + 54, this.guiTop + 72, 78, 9, new TranslationTextComponent("screen.catapult_controller.field_y"));
+        this.textFieldY = new TextFieldWidget(this.font, this.guiLeft + 54, this.guiTop + 72, 78, 9, new TranslationTextComponent("screen.sophon_controller.field_y"));
         this.textFieldY.setMaxStringLength(18);
         this.textFieldY.setEnableBackgroundDrawing(false);
         this.textFieldY.setTextColor(0x62FF7F);
         this.children.add(this.textFieldY);
 
-        this.textFieldZ = new TextFieldWidget(this.font, this.guiLeft + 54, this.guiTop + 86, 78, 9, new TranslationTextComponent("screen.catapult_controller.field_z"));
+        this.textFieldZ = new TextFieldWidget(this.font, this.guiLeft + 54, this.guiTop + 86, 78, 9, new TranslationTextComponent("screen.sophon_controller.field_z"));
         this.textFieldZ.setMaxStringLength(18);
         this.textFieldZ.setEnableBackgroundDrawing(false);
         this.textFieldZ.setTextColor(0x62FF7F);
@@ -205,20 +208,16 @@ public class ScreenSophonController extends Screen
 
     private void renderPosSetPanel(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks)
     {
-        TranslationTextComponent pos = new TranslationTextComponent("screen.sophon_controller.pos");
-        this.font.drawText(matrixStack, pos, this.guiLeft + 9, this.guiTop + 40, 0xFF9999);
-        TranslationTextComponent changeMode = new TranslationTextComponent("screen.sophon_controller.change_mode");
-        this.font.drawText(matrixStack, changeMode, this.guiLeft + 127, this.guiTop + 41, 0xFF9999);
-        TranslationTextComponent done = new TranslationTextComponent("screen.sophon_controller.done");
-        this.font.drawText(matrixStack, done, this.guiLeft + 149, this.guiTop + 41, 0xFF9999);
+        this.font.drawText(matrixStack, new TranslationTextComponent("screen.sophon_controller.pos"), this.guiLeft + 9, this.guiTop + 40, 0xFF9999);
+        this.font.drawText(matrixStack, new TranslationTextComponent("screen.sophon_controller.change_mode"), this.guiLeft + 127, this.guiTop + 41, 0xFF9999);
+        this.font.drawText(matrixStack, new TranslationTextComponent("screen.sophon_controller.done"), this.guiLeft + 149, this.guiTop + 41, 0xFF9999);
 
         if (this.usePos)
         {
             this.minecraft.getTextureManager().bindTexture(TEXTURE);
             this.blit(matrixStack, this.guiLeft + 51, this.guiTop + 56, 0, 166, 80, 40);
 
-            TranslationTextComponent clear = new TranslationTextComponent("screen.sophon_controller.clear");
-            this.font.drawText(matrixStack, clear, this.guiLeft + 105, this.guiTop + 41, 0xFF9999);
+            this.font.drawText(matrixStack, new TranslationTextComponent("screen.sophon_controller.clear"), this.guiLeft + 105, this.guiTop + 41, 0xFF9999);
             this.font.drawText(matrixStack, new StringTextComponent("X: "), this.guiLeft + 43, this.guiTop + 58, 0xFF9999);
             this.font.drawText(matrixStack, new StringTextComponent("Y: "), this.guiLeft + 43, this.guiTop + 72, 0xFF9999);
             this.font.drawText(matrixStack, new StringTextComponent("Z: "), this.guiLeft + 43, this.guiTop + 86, 0xFF9999);
@@ -235,7 +234,7 @@ public class ScreenSophonController extends Screen
             }
             catch (NumberFormatException e)
             {
-                this.font.drawText(matrixStack, new TranslationTextComponent("screen.catapult_controller.number_incorrect"), this.guiLeft + 54, this.guiTop + 41, 0xFF0000);
+                this.font.drawText(matrixStack, new TranslationTextComponent("screen.sophon_controller.number_incorrect"), this.guiLeft + 54, this.guiTop + 41, 0xFF0000);
                 this.numberIncorrect = true;
             }
         }
@@ -258,6 +257,42 @@ public class ScreenSophonController extends Screen
         }
     }
 
+    private void initDisplayTextPanel()
+    {
+        this.textFieldDisplayText = new TextFieldWidget(this.font, this.guiLeft + 11, this.guiTop + 119, 155, 9, new TranslationTextComponent("screen.sophon_controller.display_text"));
+        this.textFieldDisplayText.setMaxStringLength(17);
+        this.textFieldDisplayText.setEnableBackgroundDrawing(false);
+        this.textFieldDisplayText.setTextColor(0x62FF7F);
+        this.children.add(this.textFieldDisplayText);
+        try
+        {
+            this.textFieldDisplayText.setText(this.sophon.getDisplayText().getString());
+        }
+        catch (NullPointerException ignored)
+        {
+        }
+
+        this.addButton(new ImageButton(this.guiLeft + 125, this.guiTop + 103, 21, 12, 176, 0, 12, TEXTURE, (p) -> {
+            this.textFieldDisplayText.setText("");
+        }));
+
+        this.addButton(new ImageButton(this.guiLeft + 147, this.guiTop + 103, 21, 12, 176, 0, 12, TEXTURE, (p) -> {
+            if (this.usePos && !this.numberIncorrect)
+            {
+                NetworkHandler.SOPHON_DISPLAY_TEXT.sendToServer(new CSophonDisplayTextPacket(this.sophonId, this.textFieldDisplayText.getText()));
+            }
+        }));
+    }
+
+    private void renderDisplayTextPanel(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks)
+    {
+        this.font.drawText(matrixStack, new TranslationTextComponent("screen.sophon_controller.done"), this.guiLeft + 149, this.guiTop + 105, 0xFF9999);
+        this.font.drawText(matrixStack, new TranslationTextComponent("screen.sophon_controller.clear"), this.guiLeft + 127, this.guiTop + 105, 0xFF9999);
+
+        this.font.drawText(matrixStack, new TranslationTextComponent("screen.sophon_controller.display_text"), this.guiLeft + 9, this.guiTop + 104, 0xFF9999);
+        this.textFieldDisplayText.render(matrixStack, mouseX, mouseY, partialTicks);
+    }
+
     @Override
     public boolean isPauseScreen()
     {
@@ -267,10 +302,13 @@ public class ScreenSophonController extends Screen
     @Override
     public boolean keyPressed(int keyCode, int scanCode, int modifiers)
     {
-        if (this.minecraft.gameSettings.keyBindInventory.isActiveAndMatches(InputMappings.getInputByCode(keyCode, scanCode)))
+        if (!this.textFieldDisplayText.isFocused())
         {
-            this.closeScreen();
-            return true;
+            if (this.minecraft.gameSettings.keyBindInventory.isActiveAndMatches(InputMappings.getInputByCode(keyCode, scanCode)))
+            {
+                this.closeScreen();
+                return true;
+            }
         }
         return super.keyPressed(keyCode, scanCode, modifiers);
     }

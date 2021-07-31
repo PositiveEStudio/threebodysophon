@@ -15,12 +15,13 @@ import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 import xufly.threebodysophon.item.ItemRegistryHandler;
 
 import java.util.UUID;
-import java.util.Vector;
 
 public class EntitySophon extends Entity
 {
@@ -60,22 +61,41 @@ public class EntitySophon extends Entity
 
     public void setLowDimensionalExpansion(boolean lowDimensionalExpansion)
     {
-        this.dataManager.set(LOW_DIMENSIONAL_EXPANSION, lowDimensionalExpansion);
-        this.setInvisible(!lowDimensionalExpansion);
+        if (!this.world.isRemote)
+        {
+            this.dataManager.set(LOW_DIMENSIONAL_EXPANSION, lowDimensionalExpansion);
+            this.setInvisible(!lowDimensionalExpansion);
+        }
     }
 
     public void setTrackingPlayer(UUID trackingPlayer)
     {
-        this.dataManager.set(TRACKING_PLAYER, trackingPlayer.toString());
-        this.dataManager.set(TRACK_PLAYER, true);
+        if (!this.world.isRemote)
+        {
+            this.dataManager.set(TRACKING_PLAYER, trackingPlayer.toString());
+            this.dataManager.set(TRACK_PLAYER, true);
+        }
     }
 
     public void setPositionByController(double x, double y, double z)
     {
-        if (this.world.isAreaLoaded(new BlockPos(x, y, z), 0))
+        if (this.world.isAreaLoaded(new BlockPos(x, y, z), 0) && !this.world.isRemote)
         {
             this.setPosition(x, y, z);
             this.dataManager.set(TRACK_PLAYER, false);
+        }
+    }
+
+    public ITextComponent getDisplayText()
+    {
+        return new StringTextComponent(this.dataManager.get(DISPLAY_TEXT));
+    }
+
+    public void setDisplayText(String displayText)
+    {
+        if (!this.world.isRemote)
+        {
+            this.dataManager.set(DISPLAY_TEXT, displayText);
         }
     }
 
@@ -83,13 +103,16 @@ public class EntitySophon extends Entity
     public void tick()
     {
         super.tick();
-        if (this.dataManager.get(TRACK_PLAYER)) {
+        if (this.dataManager.get(TRACK_PLAYER))
+        {
             try
             {
                 PlayerEntity player = this.world.getPlayerByUuid(UUID.fromString(this.dataManager.get(TRACKING_PLAYER)));
                 Vector3d vector3d = player.getLookVec();
-                this.setPosition(player.getPosX() + vector3d.x * 5, player.getPosY() + vector3d.y * 5, player.getPosZ() + vector3d.z * 5);
-            } catch (IllegalArgumentException | NullPointerException ignored) {
+                this.setPosition(player.getPosX() + vector3d.x * 3.5D, player.getPosYEye() + vector3d.y * 3.5D - 1, player.getPosZ() + vector3d.z * 3.5D);
+            }
+            catch (IllegalArgumentException | NullPointerException ignored)
+            {
             }
         }
     }
@@ -97,7 +120,7 @@ public class EntitySophon extends Entity
     @Override
     public ActionResultType processInitialInteract(PlayerEntity player, Hand hand) // 玩家拿着控制器右键时
     {
-        if (this.getLowDimensionalExpansion() && !this.dataManager.get(BOUND))
+        if (this.getLowDimensionalExpansion() && !this.dataManager.get(BOUND) && !this.world.isRemote)
         {
             ItemStack stack = player.getHeldItem(hand);
             if (stack.getItem() == ItemRegistryHandler.SOPHON_CONTROLLER && !stack.getOrCreateTag().hasUniqueId("BindSophon"))

@@ -4,6 +4,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
 import xufly.threebodysophon.ThreebodySophon;
+import xufly.threebodysophon.network.client.CSophonDisplayTextPacket;
 import xufly.threebodysophon.network.client.CSophonExpansionPacket;
 import xufly.threebodysophon.network.client.CSophonPositionPacket;
 
@@ -20,6 +21,7 @@ public class NetworkHandler
     public static void register()
     {
         SOPHON_POSITION.messageBuilder(CSophonPositionPacket.class, getId()).encoder(CSophonPositionPacket::encode).decoder(CSophonPositionPacket::new).consumer(CSophonPositionPacket::consumer).add();
+        SOPHON_DISPLAY_TEXT.messageBuilder(CSophonDisplayTextPacket.class, getId()).encoder(CSophonDisplayTextPacket::encode).decoder(CSophonDisplayTextPacket::new).consumer(CSophonDisplayTextPacket::consumer).add();
         SOPHON_EXPANSION.messageBuilder(CSophonExpansionPacket.class, getId()).encoder(CSophonExpansionPacket::encode).decoder(CSophonExpansionPacket::new).consumer(CSophonExpansionPacket::consumer).add();
     }
 
