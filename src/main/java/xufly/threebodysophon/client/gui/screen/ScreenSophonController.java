@@ -245,9 +245,6 @@ public class ScreenSophonController extends Screen
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    this.addButton(new ImageButton(this.guiLeft + 9 + 53 * j, this.guiTop + 56 + 14 * i, 51, 12, 197, 0, 12, TEXTURE, (p) -> {
-
-                    }));
                     if ((i * 3) + (this.page * 9) + j < list.size())
                     {
                         this.font.drawText(matrixStack, list.get((i * 3) + (this.page * 9) + j).getDisplayName(), this.guiLeft + 11 + 53 * j, this.guiTop + 58 + 14 * i, 0xFF9999);
