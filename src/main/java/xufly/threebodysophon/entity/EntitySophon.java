@@ -26,18 +26,18 @@ import java.util.UUID;
 public class EntitySophon extends Entity
 {
     private static final DataParameter<Boolean> LOW_DIMENSIONAL_EXPANSION = EntityDataManager.createKey(EntitySophon.class, DataSerializers.BOOLEAN);
-    private static final DataParameter<Boolean> BOUND = EntityDataManager.createKey(EntitySophon.class, DataSerializers.BOOLEAN); // 是否已绑定
+    private static final DataParameter<Boolean> BOUND = EntityDataManager.createKey(EntitySophon.class, DataSerializers.BOOLEAN);
     private static final DataParameter<Boolean> TRACK_PLAYER = EntityDataManager.createKey(EntitySophon.class, DataSerializers.BOOLEAN);
     private static final DataParameter<String> DISPLAY_TEXT = EntityDataManager.createKey(EntitySophon.class, DataSerializers.STRING);
     private static final DataParameter<String> TEXT_ON_PLAYER_EYE = EntityDataManager.createKey(EntitySophon.class, DataSerializers.STRING);
-    private static final DataParameter<String> TRACKING_PLAYER = EntityDataManager.createKey(EntitySophon.class, DataSerializers.STRING); // 移动到玩家面前时，该玩家的UUID
+    private static final DataParameter<String> TRACKING_PLAYER = EntityDataManager.createKey(EntitySophon.class, DataSerializers.STRING);
 
     public EntitySophon(EntityType<?> entityTypeIn, World worldIn)
     {
         super(entityTypeIn, worldIn);
     }
 
-    public EntitySophon(World world, double x, double y, double z) // 不知道有没有用
+    public EntitySophon(World world, double x, double y, double z)
     {
         this(EntityRegistryHandler.SOPHON, world);
         this.setLocationAndAngles(x, y, z, this.rotationYaw, this.rotationPitch);

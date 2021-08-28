@@ -4,13 +4,13 @@ license = "Mulan Permissive Software License，Version 2"
 
 [[mods]]
 modId = "threebodysophon"
-version = "0.1.0"
+version = "${file.jarVersion}"
 displayName = "Threebody Sophon"
 logoFile = "threebodysophon.png"
 credits = "XuFly 德尔"
 authors = "XuFly"
 description = '''
-Mod Restores Zhizi in Liu Tzuxin's famous science fiction novel "Three Bodies" (as far as possible)
+Mod Restores Sophon in Liu Tzuxin's famous science fiction novel "Three Bodies" (as far as possible)
 '''
 
 [[dependencies.threebodysophon]]

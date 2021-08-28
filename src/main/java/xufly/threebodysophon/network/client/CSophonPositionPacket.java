@@ -38,7 +38,7 @@ public class CSophonPositionPacket
         this.posX = x;
         this.posY = y;
         this.posZ = z;
-        if (this.usePos) // 防止出现空指针
+        if (this.usePos)
         {
             this.trackingPlayer = UUID.randomUUID();
         }
